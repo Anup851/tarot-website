@@ -57,7 +57,7 @@ export default function ReviewsSection({ compact = false }) {
         {!compact && (
           <div className="mb-10 max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700 dark:text-amber-200">Client Notes</p>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Reviews from people who wanted clarity, not theatre.</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Experiences from people who wanted honest guidance.</h2>
           </div>
         )}
 
@@ -84,7 +84,7 @@ export default function ReviewsSection({ compact = false }) {
             ))}
           </div>
         ) : (
-          <div className="card text-center text-slate-500 dark:text-slate-400">No reviews yet.</div>
+          <div className="card text-center text-slate-500 dark:text-slate-400">Client reviews will appear here soon.</div>
         )}
       </div>
     </section>

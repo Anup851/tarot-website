@@ -9,7 +9,7 @@ export default function OwnerChatsPage() {
   const { loading: authLoading, role, user } = useAuth()
 
   if (authLoading) {
-    return <div className="section-shell py-16"><div className="card text-center text-slate-500 dark:text-slate-400">Loading chats...</div></div>
+    return <div className="section-shell py-16"><div className="card text-center text-slate-500 dark:text-slate-400">Opening client conversations...</div></div>
   }
 
   if (!user || role !== 'owner') {
@@ -17,9 +17,9 @@ export default function OwnerChatsPage() {
       <div className="section-shell py-16">
         <div className="card mx-auto max-w-2xl text-center">
           <ShieldAlert className="mx-auto mb-5 text-rose-600" size={36} />
-          <h1 className="text-3xl font-black tracking-tight">Owner access required.</h1>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Sign in with an owner-approved account to view client chat threads.</p>
-          <Link className="btn-primary mt-7" to="/auth">Go to login</Link>
+          <h1 className="text-3xl font-black tracking-tight">Studio access required.</h1>
+          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Sign in with an approved studio account to view and reply to client conversations.</p>
+          <Link className="btn-primary mt-7" to="/auth">Go to sign in</Link>
         </div>
       </div>
     )
@@ -30,18 +30,18 @@ export default function OwnerChatsPage() {
       <ScrollReveal className="mb-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.06] sm:p-8">
         <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-violet-700 dark:text-amber-200">
           <Sparkles size={16} />
-          Owner Chats
+          Client Conversations
         </p>
-        <h1 className="max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">Client conversations.</h1>
+        <h1 className="max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">A dedicated space for client messages.</h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-          Reply to users, review saved messages, and close or reopen conversations from a dedicated chat workspace.
+          Review incoming questions, continue follow-ups, and close conversations once the client has what they need.
         </p>
       </ScrollReveal>
 
       <ScrollReveal className="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.06] sm:p-6">
         <h2 className="mb-5 flex items-center gap-2 text-xl font-black">
           <MessageCircle className="text-violet-700 dark:text-amber-200" size={20} />
-          Live Chat Threads
+          Conversation Threads
         </h2>
         <OwnerChatPanel user={user} />
       </ScrollReveal>
@@ -164,7 +164,7 @@ function OwnerChatPanel({ user }) {
     setSaving(false)
   }
 
-  if (loading) return <p className="text-sm text-slate-500 dark:text-slate-400">Loading chats...</p>
+  if (loading) return <p className="text-sm text-slate-500 dark:text-slate-400">Opening conversations...</p>
 
   return (
     <div className="grid gap-4 lg:grid-cols-[0.75fr_1.25fr]">
@@ -181,14 +181,14 @@ function OwnerChatPanel({ user }) {
               <Badge>{thread.status}</Badge>
             </div>
           </button>
-        )) : <EmptyState text="No chat threads yet." />}
+        )) : <EmptyState text="No client conversations have started yet." />}
       </div>
 
       <div className="rounded-[1.25rem] border border-slate-200 bg-stone-50 dark:border-white/10 dark:bg-slate-950/50">
         <div className="flex items-center justify-between gap-3 border-b border-slate-200 p-4 dark:border-white/10">
           <div>
-            <p className="font-black">{activeThread?.user_email || 'Select a chat'}</p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">{messages.length} saved messages</p>
+            <p className="font-black">{activeThread?.user_email || 'Select a conversation'}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{messages.length} message{messages.length === 1 ? '' : 's'} in this thread</p>
           </div>
           {activeThread && (
             <button className="btn-secondary min-h-9 px-3 py-1.5 text-xs" disabled={saving} onClick={toggleStatus} type="button">
@@ -200,7 +200,7 @@ function OwnerChatPanel({ user }) {
         <div className="grid min-h-[28rem] content-end gap-3 p-4">
           {messages.length > 0 ? messages.map((message) => (
             <OwnerChatBubble key={message.id} message={message} mine={message.sender_role === 'owner'} />
-          )) : <p className="text-sm text-slate-500 dark:text-slate-400">No messages selected.</p>}
+          )) : <p className="text-sm text-slate-500 dark:text-slate-400">Choose a conversation to read and reply.</p>}
         </div>
 
         <form className="flex gap-2 border-t border-slate-200 p-4 dark:border-white/10" onSubmit={sendReply}>

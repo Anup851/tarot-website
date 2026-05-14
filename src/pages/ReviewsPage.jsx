@@ -31,7 +31,7 @@ export default function ReviewsPage() {
 
     try {
       if (!supabase) {
-        setMessage({ type: 'success', text: 'Demo mode: review form is ready. Add Supabase keys to store submissions.' })
+        setMessage({ type: 'success', text: 'Your review is ready to send once reviews are enabled.' })
         setFormData(initialForm)
         return
       }
@@ -44,7 +44,7 @@ export default function ReviewsPage() {
           recipient_role: 'owner',
           actor_email: formData.email,
           type: 'review_created',
-          title: 'New review posted',
+          title: 'New client review',
           message: `${formData.author} posted a ${formData.rating}-star review.`,
           action_url: '/owner',
           related_table: 'reviews',
@@ -57,8 +57,8 @@ export default function ReviewsPage() {
           recipient_user_id: user.id,
           actor_email: formData.email,
           type: 'review_created',
-          title: 'Review posted',
-          message: 'Your review is live on the website.',
+          title: 'Review received',
+          message: 'Thank you for sharing your experience.',
           action_url: '/reviews',
           related_table: 'reviews',
           related_id: data.id,
@@ -67,7 +67,7 @@ export default function ReviewsPage() {
 
       await supabase.from('app_notifications').insert(notifications)
 
-      setMessage({ type: 'success', text: 'Thank you. Your review is now live.' })
+      setMessage({ type: 'success', text: 'Thank you. Your review has been received.' })
       setFormData(initialForm)
     } catch (error) {
       setMessage({ type: 'error', text: error.message })
@@ -80,10 +80,10 @@ export default function ReviewsPage() {
     <div>
       <section className="section-shell py-16">
         <ScrollReveal className="mb-12 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700 dark:text-amber-200">Customer Reviews</p>
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">Proof, feedback, and trust.</h1>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700 dark:text-amber-200">Client Reviews</p>
+          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">What clients say after a reading.</h1>
           <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-            Reviews are pulled directly from Supabase and update on the site as new feedback arrives.
+            Read reflections from people who came in with questions and left with clearer language, perspective, and next steps.
           </p>
         </ScrollReveal>
       </section>
@@ -94,7 +94,7 @@ export default function ReviewsPage() {
         <ScrollReveal as="form" className="card depth-hover mx-auto max-w-2xl p-6 sm:p-8" onSubmit={handleSubmit}>
           <div className="mb-6">
             <h2 className="text-2xl font-bold">Share your experience</h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-300">Your review is saved to Supabase and appears on the site.</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-300">Your note helps future clients understand what a session can feel like.</p>
           </div>
 
           {message.text && (
@@ -106,7 +106,7 @@ export default function ReviewsPage() {
 
           {!hasSupabaseConfig && (
             <div className="mb-6 rounded-2xl border border-amber-300/70 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-200/30 dark:bg-amber-300/10 dark:text-amber-100">
-              Supabase environment keys are not configured, so submissions run in demo mode.
+              Reviews are not connected yet. You can still preview the form layout.
             </div>
           )}
 

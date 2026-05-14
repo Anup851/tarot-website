@@ -66,9 +66,9 @@ export default function Header({ isDark, toggleTheme }) {
               </div>
             </>
           ) : (
-            <NavLink aria-label="Login" className="hidden h-10 items-center gap-2 rounded-full border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-900 hover:border-violet-400 dark:border-white/15 dark:bg-white/10 dark:text-white md:inline-flex" to="/auth">
+            <NavLink aria-label="Sign in" className="hidden h-10 items-center gap-2 rounded-full border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-900 hover:border-violet-400 dark:border-white/15 dark:bg-white/10 dark:text-white md:inline-flex" to="/auth">
               <User size={16} />
-              Login
+              Sign in
             </NavLink>
           )}
           <button aria-label="Toggle color theme" className="grid h-10 w-10 place-items-center rounded-full border border-slate-300 bg-white text-slate-900 hover:border-violet-400 dark:border-white/15 dark:bg-white/10 dark:text-white" onClick={toggleTheme} type="button">
@@ -99,7 +99,7 @@ export default function Header({ isDark, toggleTheme }) {
               </div>
             ) : (
               <NavLink to="/auth" className={navClass} onClick={() => setIsOpen(false)}>
-                Login
+                Sign in
               </NavLink>
             )}
           </div>

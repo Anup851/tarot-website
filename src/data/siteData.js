@@ -2,7 +2,7 @@ export const services = [
   {
     id: 'clarity',
     title: 'Clarity Reading',
-    description: 'A focused 30 minute session for career, love, money, or a decision that needs clean perspective.',
+    description: 'A focused session for one question, decision, or situation that needs calm perspective and practical next steps.',
     price: '$45',
     duration: '30 min',
     accent: 'from-violet-500 to-fuchsia-500',
@@ -10,7 +10,7 @@ export const services = [
   {
     id: 'deep-cross',
     title: 'Celtic Cross Session',
-    description: 'A layered ten-card spread for patterns, hidden influences, next steps, and practical timing.',
+    description: 'A full ten-card reading for deeper patterns, hidden influences, likely outcomes, and grounded guidance.',
     price: '$85',
     duration: '60 min',
     accent: 'from-cyan-500 to-blue-600',
@@ -18,7 +18,7 @@ export const services = [
   {
     id: 'year-map',
     title: 'Soul Map Forecast',
-    description: 'A seasonal forecast with a written recap, action notes, and rituals for the next chapter.',
+    description: 'A longer forecast for the months ahead, including themes, turning points, reflection prompts, and written notes.',
     price: '$140',
     duration: '90 min',
     accent: 'from-amber-400 to-rose-500',
@@ -30,43 +30,43 @@ export const tarotDeck = [
     id: 'fool',
     name: 'The Fool',
     theme: 'New beginnings',
-    meaning: 'Choose curiosity over certainty. A fresh path is opening.',
+    meaning: 'A new chapter is opening. Move with openness, but keep your feet on the ground.',
   },
   {
     id: 'magician',
     name: 'The Magician',
     theme: 'Manifestation',
-    meaning: 'You already have more tools than you think. Use one with intention.',
+    meaning: 'You have the tools you need. Choose one clear action and follow through.',
   },
   {
     id: 'priestess',
     name: 'The High Priestess',
     theme: 'Intuition',
-    meaning: 'Pause before acting. The quiet answer is probably the honest one.',
+    meaning: 'Slow down and listen closely. The answer is already forming beneath the noise.',
   },
   {
     id: 'empress',
     name: 'The Empress',
     theme: 'Growth',
-    meaning: 'Nurture what is alive instead of forcing what is finished.',
+    meaning: 'Give time and care to what is growing. Support the part of your life that still has energy.',
   },
   {
     id: 'chariot',
     name: 'The Chariot',
     theme: 'Direction',
-    meaning: 'Discipline and desire can move together when the destination is clear.',
+    meaning: 'Direction matters now. Focus your energy and let discipline carry you forward.',
   },
   {
     id: 'star',
     name: 'The Star',
     theme: 'Renewal',
-    meaning: 'Hope is returning as a practice, not just a feeling.',
+    meaning: 'Renewal is possible. Let rest, honesty, and hope work together.',
   },
 ]
 
 export const readerHighlights = [
-  'Private online sessions with calendar-ready booking requests',
-  'Moderated customer reviews and featured testimonials',
-  'Reusable service catalog for packages, prices, and durations',
-  'Reading history tables prepared for client accounts and dashboards',
+  'Private online readings with clear session details before you book',
+  'Client reviews that reflect real experiences and thoughtful guidance',
+  'Flexible packages for focused questions, deeper spreads, and forecasts',
+  'Follow-up notes and conversation support for continued clarity',
 ]

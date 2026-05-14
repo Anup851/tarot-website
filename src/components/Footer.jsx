@@ -13,7 +13,7 @@ export default function Footer() {
             <span className="font-black">Arcana Studio</span>
           </div>
           <p className="max-w-md leading-7 text-slate-600 dark:text-slate-300">
-            A modern tarot prediction website with booking, reviews, portfolio services, theme switching, and Supabase-ready data.
+            Private tarot readings for clear questions, meaningful transitions, and grounded next steps.
           </p>
         </div>
 
@@ -24,7 +24,8 @@ export default function Footer() {
             <Link to="/portfolio" className="hover:text-violet-700 dark:hover:text-amber-200">Portfolio</Link>
             <Link to="/bookings" className="hover:text-violet-700 dark:hover:text-amber-200">Book Session</Link>
             <Link to="/reviews" className="hover:text-violet-700 dark:hover:text-amber-200">Reviews</Link>
-            <Link to="/auth" className="hover:text-violet-700 dark:hover:text-amber-200">Login</Link>
+            <Link to="/chat" className="hover:text-violet-700 dark:hover:text-amber-200">Chat</Link>
+            <Link to="/auth" className="hover:text-violet-700 dark:hover:text-amber-200">Sign in</Link>
           </div>
         </div>
 

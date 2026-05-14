@@ -14,13 +14,13 @@ export default function Home() {
           <ScrollReveal>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-2 text-sm font-bold text-violet-700 shadow-sm dark:border-white/10 dark:bg-white/10 dark:text-amber-100">
               <Sparkles size={16} />
-              Modern tarot studio for clear decisions
+              Private tarot readings for grounded clarity
             </p>
             <h1 className="max-w-4xl text-5xl font-black tracking-tight text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
-              Tarot prediction with a grounded, modern ritual.
+              Thoughtful readings for decisions, transitions, and the questions that stay with you.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-              Book intuitive readings, explore services, pull a daily spread, and collect client reviews in a Supabase-backed experience built to scale into a real booking platform.
+              Arcana Studio offers calm, practical tarot sessions that help you understand the pattern, name the choice, and leave with a next step you can actually use.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link className="btn-primary" to="/bookings">
@@ -59,7 +59,7 @@ export default function Home() {
       <ScrollReveal as="section" className="section-shell py-16">
         <div className="mb-10 max-w-2xl">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700 dark:text-amber-200">Portfolio</p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Session packages designed for real questions.</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Choose the reading that matches the moment.</h2>
         </div>
         <Portfolio />
       </ScrollReveal>
@@ -68,9 +68,9 @@ export default function Home() {
         <div className="section-shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <ScrollReveal>
             <ShieldCheck className="mb-5 text-amber-200 dark:text-violet-600" size={36} />
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Built like a real service business.</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">A reading experience designed with care.</h2>
             <p className="mt-4 leading-7 text-slate-300 dark:text-slate-600">
-              The app includes booking requests, service records, reviews, reading history, and public content tables so it can grow past a landing page.
+              Every session is private, focused, and easy to book. You can ask a specific question, explore a bigger pattern, or return later for follow-up support.
             </p>
           </ScrollReveal>
           <div className="grid gap-4 sm:grid-cols-2">

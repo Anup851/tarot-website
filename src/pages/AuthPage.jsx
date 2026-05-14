@@ -9,14 +9,14 @@ const roleOptions = [
   {
     role: 'user',
     icon: User,
-    title: 'Login as User',
-    text: 'Book sessions, post reviews, and keep your client account ready for future features.',
+    title: 'Client Access',
+    text: 'Book readings, leave reviews, and continue private conversations with the studio.',
   },
   {
     role: 'owner',
     icon: Crown,
-    title: 'Login as Owner',
-    text: 'Open the owner dashboard for bookings, reviews, messages, and business data.',
+    title: 'Studio Access',
+    text: 'Manage booking requests, client reviews, messages, and reading records.',
   },
 ]
 
@@ -49,8 +49,8 @@ export default function AuthPage() {
       <div className="section-shell py-16">
         <div className="card mx-auto max-w-2xl text-center">
           <Sparkles className="mx-auto mb-5 text-violet-700 dark:text-amber-200" size={34} />
-          <h1 className="text-3xl font-black tracking-tight">Supabase auth is not configured.</h1>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Add your Supabase URL and anon key to use Google login.</p>
+          <h1 className="text-3xl font-black tracking-tight">Sign-in is not available yet.</h1>
+          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Account access will be available once the studio portal is connected.</p>
         </div>
       </div>
     )
@@ -65,11 +65,11 @@ export default function AuthPage() {
       <ScrollReveal className="mx-auto mb-10 max-w-3xl text-center">
         <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700 dark:text-amber-200">
           <ShieldCheck size={16} />
-          Secure Access
+          Account Access
         </p>
-        <h1 className="text-4xl font-black tracking-tight sm:text-6xl">Login to your account.</h1>
+        <h1 className="text-4xl font-black tracking-tight sm:text-6xl">Sign in to continue.</h1>
         <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-          Choose user or owner, then continue with Google or email and password.
+          Choose the access type that matches your role, then continue with your preferred sign-in method.
         </p>
       </ScrollReveal>
 
@@ -92,7 +92,7 @@ export default function AuthPage() {
               </button>
               <button className={isSelected && authMethod === 'gmail' ? 'btn-primary mt-3 w-full' : 'btn-secondary mt-3 w-full'} onClick={(event) => { event.stopPropagation(); setSelectedRole(optionRole); setAuthMethod('gmail') }} type="button">
                 <Mail size={16} />
-                Continue with Gmail
+                Continue with email
               </button>
             </ScrollReveal>
           )
@@ -103,9 +103,9 @@ export default function AuthPage() {
         <div className="mb-6">
           <p className="mb-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-amber-200">
             <Mail size={16} />
-            Email Login
+            Email Sign In
           </p>
-          <h2 className="text-2xl font-bold">Login as {selectedRole === 'owner' ? 'owner' : 'user'}</h2>
+          <h2 className="text-2xl font-bold">{selectedRole === 'owner' ? 'Studio sign in' : 'Client sign in'}</h2>
         </div>
 
         {message && (
@@ -122,7 +122,7 @@ export default function AuthPage() {
 
         <button className="btn-primary mt-6 w-full" disabled={submitting} type="submit">
           <Mail size={16} />
-          {submitting ? 'Logging in...' : 'Login with email'}
+          {submitting ? 'Signing in...' : 'Sign in with email'}
         </button>
       </ScrollReveal>
     </div>

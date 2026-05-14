@@ -129,8 +129,8 @@ export default function ChatPage() {
       <div className="section-shell py-16">
         <div className="card mx-auto max-w-2xl text-center">
           <Sparkles className="mx-auto mb-5 text-violet-700 dark:text-amber-200" size={34} />
-          <h1 className="text-3xl font-black tracking-tight">Chat needs Supabase.</h1>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Add Supabase keys to enable saved realtime messages.</p>
+          <h1 className="text-3xl font-black tracking-tight">Chat is not available yet.</h1>
+          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Once messaging is enabled, you will be able to contact the studio directly from here.</p>
         </div>
       </div>
     )
@@ -141,9 +141,9 @@ export default function ChatPage() {
       <div className="section-shell py-16">
         <div className="card mx-auto max-w-2xl text-center">
           <MessageCircle className="mx-auto mb-5 text-violet-700 dark:text-amber-200" size={34} />
-          <h1 className="text-3xl font-black tracking-tight">Login to chat.</h1>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Sign in so your conversation can be saved and answered by the owner.</p>
-          <Link className="btn-primary mt-7" to="/auth">Go to login</Link>
+          <h1 className="text-3xl font-black tracking-tight">Sign in to message the studio.</h1>
+          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Your conversation is private to your account and can be continued later.</p>
+          <Link className="btn-primary mt-7" to="/auth">Go to sign in</Link>
         </div>
       </div>
     )
@@ -155,19 +155,19 @@ export default function ChatPage() {
         <div className="mb-6">
           <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-violet-700 dark:text-amber-200">
             <MessageCircle size={16} />
-            Studio Chat
+            Client Support
           </p>
-          <h1 className="text-4xl font-black tracking-tight sm:text-5xl">Message the owner.</h1>
-          <p className="mt-4 text-slate-600 dark:text-slate-300">Ask about bookings, readings, payments, or follow-up notes. Messages are saved and update live.</p>
+          <h1 className="text-4xl font-black tracking-tight sm:text-5xl">Ask a question before or after your reading.</h1>
+          <p className="mt-4 text-slate-600 dark:text-slate-300">Use this space for booking questions, preparation notes, payment details, or follow-up support.</p>
         </div>
 
         <div className="rounded-[1.5rem] border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.06]">
           <div className="flex items-center justify-between border-b border-slate-200 p-4 dark:border-white/10">
             <div>
               <p className="font-black">Arcana Studio</p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{thread?.status === 'closed' ? 'Closed conversation' : 'Realtime conversation'}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">{thread?.status === 'closed' ? 'Conversation closed' : 'Private conversation'}</p>
             </div>
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black uppercase text-emerald-800 dark:bg-emerald-300/10 dark:text-emerald-100">saved</span>
+            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black uppercase text-emerald-800 dark:bg-emerald-300/10 dark:text-emerald-100">private</span>
           </div>
 
           {error && (
@@ -183,7 +183,7 @@ export default function ChatPage() {
             ) : messages.length > 0 ? messages.map((message) => (
               <ChatBubble key={message.id} message={message} mine={message.sender_role === 'user'} />
             )) : (
-              <p className="rounded-2xl border border-dashed border-slate-300 p-5 text-sm font-semibold text-slate-500 dark:border-white/15 dark:text-slate-400">No messages yet. Start the conversation below.</p>
+              <p className="rounded-2xl border border-dashed border-slate-300 p-5 text-sm font-semibold text-slate-500 dark:border-white/15 dark:text-slate-400">No messages yet. Send your first question below.</p>
             )}
           </div>
 

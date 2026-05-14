@@ -146,9 +146,9 @@ export default function OwnerDashboard() {
       <div className="section-shell py-16">
         <div className="card mx-auto max-w-2xl text-center">
           <ShieldAlert className="mx-auto mb-5 text-rose-600" size={36} />
-          <h1 className="text-3xl font-black tracking-tight">Owner access required.</h1>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Sign in with an owner-approved account to view bookings, reviews, and private business data.</p>
-          <Link className="btn-primary mt-7" to="/auth">Go to login</Link>
+          <h1 className="text-3xl font-black tracking-tight">Studio access required.</h1>
+          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">Sign in with an approved studio account to manage bookings, reviews, and client records.</p>
+          <Link className="btn-primary mt-7" to="/auth">Go to sign in</Link>
         </div>
       </div>
     )
@@ -160,11 +160,11 @@ export default function OwnerDashboard() {
         <div>
           <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-violet-700 dark:text-amber-200">
             <Sparkles size={16} />
-            Owner Home
+            Studio Dashboard
           </p>
-          <h1 className="max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">Manage the studio from one place.</h1>
+          <h1 className="max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">Today’s client work, organized.</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-            Bookings, reviews, client messages, and reading history are split into clear service lanes so daily work feels less cramped.
+            Review new booking requests, moderate client feedback, handle messages, and keep recent reading records easy to scan.
           </p>
         </div>
       </ScrollReveal>
@@ -185,19 +185,19 @@ export default function OwnerDashboard() {
       </div>
 
       <div className="mb-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <ServicePanel title="Priority" icon={priorityNotification ? Bell : Clock3} subtitle="One thing to handle first">
+        <ServicePanel title="Priority" icon={priorityNotification ? Bell : Clock3} subtitle="The item that most needs attention">
           {priorityNotification ? (
             <NotificationRow notification={priorityNotification} onHandled={markHandled} onRead={markRead} />
           ) : latestBooking ? (
             <BookingCard booking={latestBooking} compact isSaving={savingId === `bookings-${latestBooking.id}`} onStatus={(status) => updateRow({ id: latestBooking.id, table: 'bookings', values: { status } })} />
           ) : (
-            <EmptyState text="No priority work yet." />
+            <EmptyState text="No urgent items right now." />
           )}
         </ServicePanel>
 
-        <ServicePanel title="Quick Actions" icon={CheckCircle2} subtitle="Small tools for daily admin">
+        <ServicePanel title="Quick Actions" icon={CheckCircle2} subtitle="Common studio tasks at a glance">
           <div className="grid gap-3 sm:grid-cols-3">
-            <QuickAction icon={CalendarDays} label="Confirm next" text={latestBooking ? latestBooking.client_name : 'No booking'} />
+            <QuickAction icon={CalendarDays} label="Next request" text={latestBooking ? latestBooking.client_name : 'No active request'} />
             <QuickAction icon={Star} label="Feature review" text={`${featuredReviews} featured`} />
             <QuickAction icon={Mail} label="Inbox sweep" text={`${unreadMessages} new`} />
           </div>
@@ -205,15 +205,15 @@ export default function OwnerDashboard() {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <ServicePanel title="Booking Desk" icon={CalendarDays} subtitle="Confirm, complete, or cancel incoming requests">
+        <ServicePanel title="Booking Desk" icon={CalendarDays} subtitle="Review incoming requests and keep session status current">
           <div className="grid gap-4">
             {data.bookings.length > 0 ? data.bookings.map((booking) => (
               <BookingCard key={booking.id} booking={booking} isSaving={savingId === `bookings-${booking.id}`} onStatus={(status) => updateRow({ id: booking.id, table: 'bookings', values: { status } })} />
-            )) : <EmptyState text="No bookings yet." />}
+            )) : <EmptyState text="No booking requests are waiting." />}
           </div>
         </ServicePanel>
 
-        <ServicePanel title="Review Studio" icon={Star} subtitle="Moderate visibility and choose featured praise">
+        <ServicePanel title="Review Studio" icon={Star} subtitle="Publish client feedback and highlight meaningful testimonials">
           <div className="grid gap-4">
             {data.reviews.length > 0 ? data.reviews.map((review) => (
               <ReviewCard
@@ -223,11 +223,11 @@ export default function OwnerDashboard() {
                 onVerify={() => updateRow({ id: review.id, table: 'reviews', values: { verified: !review.verified } })}
                 review={review}
               />
-            )) : <EmptyState text="No reviews yet." />}
+            )) : <EmptyState text="No client reviews have been submitted yet." />}
           </div>
         </ServicePanel>
 
-        <ServicePanel title="Client Inbox" icon={Inbox} subtitle="Track messages without leaving the owner home">
+        <ServicePanel title="Client Inbox" icon={Inbox} subtitle="Read contact messages and archive completed follow-ups">
           <div className="grid gap-4">
             {data.messages.length > 0 ? data.messages.map((message) => (
               <MessageCard
@@ -237,15 +237,15 @@ export default function OwnerDashboard() {
                 onArchive={() => updateRow({ id: message.id, table: 'contact_messages', values: { status: message.status === 'archived' ? 'read' : 'archived' } })}
                 onRead={() => updateRow({ id: message.id, table: 'contact_messages', values: { status: 'read' } })}
               />
-            )) : <EmptyState text="No messages yet." />}
+            )) : <EmptyState text="No contact messages are waiting." />}
           </div>
         </ServicePanel>
 
-        <ServicePanel title="Reading Archive" icon={Users} subtitle="Recent client reading records">
+        <ServicePanel title="Reading Archive" icon={Users} subtitle="Recent saved reading sessions and notes">
           <div className="grid gap-4">
             {data.sessions.length > 0 ? data.sessions.map((session) => (
-              <DataRow key={session.id} badge={session.spread_type} meta={session.question || session.interpretation || 'No notes saved yet.'} title={session.client_email} />
-            )) : <EmptyState text="No reading sessions yet." />}
+              <DataRow key={session.id} badge={session.spread_type} meta={session.question || session.interpretation || 'Session notes have not been added yet.'} title={session.client_email} />
+            )) : <EmptyState text="No reading sessions have been saved yet." />}
           </div>
         </ServicePanel>
       </div>

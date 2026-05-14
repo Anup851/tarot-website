@@ -32,7 +32,7 @@ export default function SessionBooking() {
 
     try {
       if (!supabase) {
-        setMessage({ type: 'success', text: 'Demo mode: your booking form is ready. Add Supabase keys to store real requests.' })
+        setMessage({ type: 'success', text: 'Your booking request is ready to send once online booking is enabled.' })
         setFormData(initialForm)
         return
       }
@@ -69,8 +69,8 @@ export default function SessionBooking() {
           recipient_user_id: user.id,
           actor_email: formData.email,
           type: 'booking_created',
-          title: 'Booking request sent',
-          message: `Your ${selected?.title || 'tarot'} booking request was sent successfully.`,
+          title: 'Booking request received',
+          message: `Your ${selected?.title || 'reading'} request was sent successfully.`,
           action_url: '/bookings',
           related_table: 'bookings',
           related_id: bookingId,
@@ -79,7 +79,7 @@ export default function SessionBooking() {
 
       await supabase.from('app_notifications').insert(notifications)
 
-      setMessage({ type: 'success', text: 'Booking request sent. You will receive a confirmation after review.' })
+      setMessage({ type: 'success', text: 'Your request has been received. You will get a confirmation after review.' })
       setFormData(initialForm)
     } catch (error) {
       setMessage({ type: 'error', text: error.message })
@@ -92,9 +92,9 @@ export default function SessionBooking() {
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
       <aside className="rounded-[2rem] bg-slate-950 p-8 text-white dark:bg-white dark:text-slate-950">
         <CalendarCheck className="mb-8 text-amber-200 dark:text-violet-600" size={36} />
-        <h2 className="text-3xl font-bold tracking-tight">Book a private session.</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Tell us what you need clarity on.</h2>
         <p className="mt-4 leading-7 text-slate-300 dark:text-slate-600">
-          Send a request with your preferred date and focus area. You can connect this form directly to Supabase, admin workflows, email automation, and payment status tracking.
+          Choose a reading, share your preferred time, and add a few notes about the question or situation you want to explore.
         </p>
         <div className="mt-8 grid gap-3">
           {services.map((service) => (
@@ -119,7 +119,7 @@ export default function SessionBooking() {
 
         {!hasSupabaseConfig && (
           <div className="mb-6 rounded-2xl border border-amber-300/70 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-200/30 dark:bg-amber-300/10 dark:text-amber-100">
-            Supabase environment keys are not configured, so submissions run in demo mode.
+            Online booking is not connected yet. You can still preview the form layout.
           </div>
         )}
 
@@ -136,11 +136,11 @@ export default function SessionBooking() {
           <input className="input-field" name="time" onChange={handleChange} required type="time" value={formData.time} />
         </div>
 
-        <textarea className="input-field mt-4 min-h-36" name="message" onChange={handleChange} placeholder="What would you like the reading to focus on?" value={formData.message} />
+        <textarea className="input-field mt-4 min-h-36" name="message" onChange={handleChange} placeholder="What question, choice, or life area should the reading focus on?" value={formData.message} />
 
         <button className="btn-primary mt-6 w-full" disabled={loading} type="submit">
           <Send size={16} />
-          {loading ? 'Sending request...' : 'Request booking'}
+            {loading ? 'Sending request...' : 'Send booking request'}
         </button>
       </form>
     </div>
