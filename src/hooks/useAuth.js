@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { siteUrl, supabase } from '../lib/supabase'
 
 const pendingRoleKey = 'arcana_pending_role'
 const ownerEmail = 'admin123@gmail.com'
@@ -95,7 +95,7 @@ function useAuthState() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin,
+        redirectTo: siteUrl,
         queryParams: {
           access_type: 'offline',
           prompt: 'consent',

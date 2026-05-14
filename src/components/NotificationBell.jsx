@@ -19,7 +19,7 @@ export default function NotificationBell() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-3 w-[min(22rem,calc(100vw-2rem))] rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/30">
+        <div className="fixed left-1/2 top-16 z-50 mt-3 w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/30 md:absolute md:left-auto md:right-0 md:top-auto md:w-[min(22rem,calc(100vw-2rem))] md:translate-x-0">
           <div className="mb-3 flex items-center justify-between gap-3">
             <p className="text-sm font-black">Notifications</p>
             <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{unreadCount} unread</p>
